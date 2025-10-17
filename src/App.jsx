@@ -3,7 +3,7 @@ import "./index.css";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "./Pages/HomePage";
-import JoinUs from "./Components/joinUs";
+import JoinUs from "./Components/JoinUs";
 
 const App = () => {
   return (
