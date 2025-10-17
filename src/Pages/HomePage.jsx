@@ -181,7 +181,7 @@ const HomePage = () => {
                   </option>
                 ))}
               </select>
-              <RouterLink to="/join">
+              <RouterLink to="/joinus">
                 <button className="px-6 py-2 bg-orange-700 font-aladin text-white rounded-lg hover:bg-orange-700 transition">
                   Join as Artisan
                 </button>

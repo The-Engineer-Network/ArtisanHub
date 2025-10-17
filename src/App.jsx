@@ -10,7 +10,7 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/join" element={<JoinUs />} />
+        <Route path="/joinus" element={<JoinUs />} />
       </Routes>
     </BrowserRouter>
   );
