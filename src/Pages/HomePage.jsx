@@ -236,9 +236,12 @@ const HomePage = () => {
                   ))}
                 </select>
 
-                <button className="w-full px-6 py-3 bg-orange-700 font-aladin text-white rounded-lg hover:bg-orange-700 transition">
-                  Join as Artisan
-                </button>
+                <RouterLink to="/join">
+                  {" "}
+                  <button className="w-full px-6 py-3 bg-orange-700 font-aladin text-white rounded-lg hover:bg-orange-700 transition">
+                    Join as Artisan
+                  </button>
+                </RouterLink>
               </div>
             </div>
           )}
