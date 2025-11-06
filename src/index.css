@@ -1,0 +1,311 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Merriweather', Georgia, serif;
+  }
+  
+  /* Custom animations */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slideUp {
+    from { 
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to { 
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes bounceIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.3);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+    70% {
+      transform: scale(0.9);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-14 font-medium transition-all duration-200 shadow-custom hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-orange-200;
+  }
+  
+  .btn-secondary {
+    @apply bg-white text-orange-500 border-2 border-orange-500 hover:bg-orange-50 px-6 py-3 rounded-14 font-medium transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-orange-200;
+  }
+  
+  .card {
+    @apply bg-white rounded-18 shadow-custom p-4 transition-all duration-200 hover:shadow-lg;
+  }
+  
+  .input-field {
+    @apply w-full px-4 py-3 border border-gray-200 rounded-14 focus:outline-none focus:ring-4 focus:ring-orange-200 focus:border-orange-500 transition-all duration-200;
+  }
+  
+  .focus-ring {
+    @apply focus:outline-none focus:ring-4 focus:ring-orange-200;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .grid-responsive {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4;
+  }
+  
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+  
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+  
+  /* Custom animations */
+  .fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  .slide-up {
+    animation: slideUp 0.5s ease-out;
+  }
+  
+  .bounce-in {
+    animation: bounceIn 0.6s ease-out;
+  }
+  
+  /* Enhanced shadows */
+  .shadow-custom {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+  
+  .shadow-custom-lg {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Glass effect */
+  .glass {
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+  
+  /* Gradient text */
+  .gradient-text {
+    background: linear-gradient(135deg, #f97316, #ea580c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Service card hover effects */
+  .service-card {
+    transition: all 0.3s ease;
+    transform: translateY(0);
+  }
+  
+  .service-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Artisan card enhancements */
+  .artisan-card {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .artisan-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+  }
+  
+  .artisan-card:hover::before {
+    left: 100%;
+  }
+
+  /* Mobile Menu Enhancements */
+  .mobile-menu {
+    @apply fixed inset-0 bg-white z-50 lg:hidden overflow-y-auto;
+  }
+
+  /* Range Slider Enhancements */
+  .slider {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 8px;
+    background: #e5e7eb;
+    border-radius: 4px;
+    outline: none;
+  }
+
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #f97316;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  .slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #f97316;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Responsive improvements for mobile */
+  @media (max-width: 768px) {
+    .container-custom {
+      @apply px-3;
+    }
+    
+    .btn-primary,
+    .btn-secondary {
+      @apply px-4 py-3 text-sm;
+    }
+    
+    .card {
+      @apply p-3;
+    }
+    
+    .input-field {
+      @apply px-3 py-3 text-base;
+    }
+    
+    /* Mobile navigation cards */
+    .mobile-nav-card {
+      @apply p-4 rounded-xl border transition-all duration-200 text-left;
+    }
+    
+    /* Improve touch targets on mobile */
+    button,
+    .btn-primary,
+    .btn-secondary {
+      @apply min-h-[44px];
+    }
+    
+    /* Better mobile grid layouts */
+    .grid-responsive {
+      @apply grid-cols-1 gap-3;
+    }
+    
+    /* Mobile typography */
+    .mobile-text {
+      @apply text-sm;
+    }
+    
+    .mobile-heading {
+      @apply text-lg;
+    }
+  }
+
+  /* Tablet responsive improvements */
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .container-custom {
+      @apply px-6;
+    }
+    
+    .grid-responsive {
+      @apply grid-cols-2;
+    }
+  }
+
+  /* Large desktop optimizations */
+  @media (min-width: 1280px) {
+    .container-custom {
+      @apply px-8;
+    }
+    
+    .grid-responsive {
+      @apply grid-cols-3;
+    }
+  }
+
+  /* Extra small devices */
+  @media (max-width: 480px) {
+    .container-custom {
+      @apply px-2;
+    }
+    
+    .mobile-nav-card {
+      @apply p-3;
+    }
+    
+    .btn-primary,
+    .btn-secondary {
+      @apply px-3 py-2 text-xs;
+    }
+  }
+
+  /* High DPI displays */
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .shadow-custom {
+      box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.06);
+    }
+  }
+
+  /* Reduced motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    .slide-up,
+    .fade-in,
+    .bounce-in {
+      animation: none;
+    }
+    
+    .service-card,
+    .artisan-card {
+      transition: none;
+    }
+  }
+}
