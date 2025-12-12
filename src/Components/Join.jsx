@@ -1,4 +1,6 @@
 import { useState } from "react";
+
+import { useNavigate } from "react-router-dom";// ✅ import navigate hook
 import {
   User,
   Mail,
@@ -12,6 +14,7 @@ import {
 } from "lucide-react";
 
 const JoinUs = () => {
+  const navigate = useNavigate(); // ✅ initialize navigate
   const [isLogin, setIsLogin] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
@@ -57,6 +60,7 @@ const JoinUs = () => {
         return;
       }
       alert(`Creating account for: ${formData.fullName}`);
+      navigate("/artisan-dashboard"); // ✅ navigate to dashboard
     }
   };
 
@@ -68,7 +72,7 @@ const JoinUs = () => {
             <img
               src="/src/assets/logo2.jpeg"
               alt="ArtisanHub Logo"
-              className="w-17 h-12 object-contain"
+              className="w-17 h-12 object-contain"zzzzzzzzz
             />
             <span
               className="text-4xl font-bold text-gray-800"
