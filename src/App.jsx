@@ -16,9 +16,14 @@ import Contact from "./Pages/ArtisanDashboard/contact";
 function App() {
   return (
     <BrowserRouter>
+    <Navbar />
+    <div className="pt-20">
       <Routes>
         {/* Public Pages */}
         <Route path="/" element={<HomePage />} />
+        <Route path="/join" element={<JoinUs />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/faq" element={<FAQ />} />
         <Route path="/join" element={<Join />} />
         {/* Public contact page (allow visiting /contact directly) */}
         <Route path="/contact" element={<Contact />} />
@@ -33,6 +38,8 @@ function App() {
           <Route path="contact" element={<Contact />} />
         </Route>
       </Routes>
+      </div>
+     <Footer /> 
     </BrowserRouter>
   );
 }

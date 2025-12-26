@@ -16,14 +16,11 @@ import { Link as RouterLink } from "react-router-dom";
 
 const HomePage = () => {
   // STATE.
-  const [selectedLanguage, setSelectedLanguage] = useState("English");
   const [searchService, setSearchService] = useState("");
   const [searchLocation, setSearchLocation] = useState("");
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+ 
 
   // DATA: Lists of information we'll display
-  const languages = ["English", "Yoruba", "Hausa", "Igbo", "Pidgin"];
-
   const categories = [
     {
       name: "Fashion & Tailoring",
@@ -138,7 +135,7 @@ const HomePage = () => {
       text: "As an artisan, this platform changed my business. More customers every week.",
       service: "Carpentry",
     },
-    {
+    {           
       name: "Chinonso Ike",
       text: "I hired a tailor for my wedding outfit. The quality was exceptional and the process was so easy!",
       service: "Fashion & Tailoring",
@@ -249,6 +246,7 @@ const HomePage = () => {
       </nav>
 
       {/* HERO SECTION */}
+
       <section className="max-w-7xl mx-auto px-4 py-10">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
@@ -766,75 +764,6 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-
-      {/* FOOTER */}
-      <footer className="bg-gray-900 text-white py-8 pb-4">
-        <div className="max-w-7xl mx-auto px-7">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <img
-                  src="/src/assets/logo2.jpeg"
-                  alt="ArtisanHub Logo"
-                  className="w-12 h-15 object-contain"
-                />
-                <span className="text-2xl font-bold font-aladin text-white-800">
-                  Artisan<span className="text-orange-600">Hub</span>
-                </span>{" "}
-              </div>
-              <p className="text-white-400">
-                Connecting skilled artisans with customers across Nigeria
-              </p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-2 text-2xl">For Customers</h4>
-              <ul className="space-y-2 text-white-400">
-                <li className="hover:text-orange-500 cursor-pointer transition">
-                  Find Artisans
-                </li>
-                <li className="hover:text-orange-500 cursor-pointer transition">
-                  How It Works
-                </li>
-                <li className="hover:text-orange-500 cursor-pointer transition">
-                  Safety Tips
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-semibold mb-2 text-2xl">For Artisans</h4>
-              <ul className="space-y-2 text-white-400">
-                <li className="hover:text-orange-500 cursor-pointer transition">
-                  Register
-                </li>
-                <li className="hover:text-orange-500 cursor-pointer transition">
-                  Pricing
-                </li>
-                <li className="hover:text-orange-500 cursor-pointer transition">
-                  Success Stories
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-2 text-2xl">Support</h4>
-              <ul className="space-y-2 text-white-400">
-                <li className="hover:text-orange-500 cursor-pointer transition">
-                  Help Center
-                </li>
-                <li className="hover:text-orange-500 cursor-pointer transition">
-                  Contact Us
-                </li>
-                <li className="hover:text-orange-500 cursor-pointer transition">
-                  Report Issue
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 text-center text-gray-300">
-            <p>&copy; 2025 ArtisanHub. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 };
