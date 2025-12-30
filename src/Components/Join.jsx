@@ -44,6 +44,7 @@ const JoinUs = () => {
         return;
       }
       alert(`Logging in with: ${formData.email}`);
+      navigate("/dashboard");
     } else {
       if (
         !formData.fullName ||
@@ -61,7 +62,7 @@ const JoinUs = () => {
         return;
       }
       alert(`Creating account for: ${formData.fullName}`);
-      navigate("/artisan-dashboard"); // ✅ navigate to dashboard
+      navigate("/dashboard"); // ✅ navigate to dashboard
     }
   };
 
