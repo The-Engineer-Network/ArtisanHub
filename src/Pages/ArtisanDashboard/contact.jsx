@@ -4,7 +4,7 @@ import React from "react";
 const Contact = () => {
   return (
     <div className="w-full min-h-screen bg-gradient-to-br from-orange-50 via-white to-orange-100">
-     {/*  <Navbar /> */}
+      {/*  <Navbar /> */}
 
       <div className="px-6 py-16 mx-auto max-w-7xl">
         <div className="grid items-start grid-cols-1 gap-10 lg:grid-cols-2">
@@ -12,12 +12,12 @@ const Contact = () => {
           {/* LEFT SECTION */}
           <div>
             <h1 className="text-4xl font-semibold leading-snug">
-              Get in — <br /> <span className="font-medium">touch with us</span>
+              Get in <span className="font-medium">touch with us</span>
             </h1>
 
             <p className="max-w-md mt-5 text-gray-600">
-              We're here to help! Whether you have a question about our services,
-              need assistance with your account, or want to provide feedback, 
+              We are here to help! Whether you have a question about our services,
+              need assistance with your account, or want to provide feedback,
               our team is ready to assist you.
             </p>
 
@@ -45,7 +45,7 @@ const Contact = () => {
                   stroke="black"
                   className="w-3 h-3"
                 >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14m-6-6 6 6-6 6" />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14m-6-6 6 6-6 6" />
                 </svg>
               </div>
             </button>
@@ -98,15 +98,15 @@ const Contact = () => {
               >
                 Send Message
                 <div className="flex items-center justify-center w-5 h-5 bg-white rounded-full">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="3"
-                  stroke="black"
-                  className="w-3 h-3">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14m-6-6 6 6-6 6" />
-                </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="3"
+                    stroke="black"
+                    className="w-3 h-3">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14m-6-6 6 6-6 6" />
+                  </svg>
                 </div>
               </button>
             </form>

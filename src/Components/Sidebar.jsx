@@ -2,7 +2,7 @@ import { Home, User, Image, MessageCircle, Settings, LogOut } from "lucide-react
 
 const Sidebar = ({ isOpen, setIsOpen }) => {
   const navItems = [
-    { name: "Dashboard", icon: <Home />, path: "/" },
+    { name: "Dashboard", icon: <Home />, path: "/dashboard" },
     { name: "Profile", icon: <User />, path: "/dashboard/profile" },
     { name: "Portfolio", icon: <Image />, path: "/dashboard/portfolio" },
     { name: "Messages", icon: <MessageCircle />, path: "/dashboard/messages" },
@@ -11,9 +11,8 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
 
   return (
     <aside
-      className={`fixed md:static top-0 left-0 h-full w-64 bg-white border-r border-gray-200 p-4 flex flex-col shadow-lg transform transition-transform duration-300 ${
-        isOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
-      }`}
+      className={`fixed md:static top-0 left-0 h-full w-64 bg-white border-r border-gray-200 p-4 flex flex-col shadow-lg transform transition-transform duration-300 ${isOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
+        }`}
     >
       <div className="flex items-center justify-between mb-8">
         <h1 className="text-2xl font-bold text-gray-800">
