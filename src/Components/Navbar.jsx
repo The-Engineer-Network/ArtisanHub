@@ -18,7 +18,7 @@ const Navbar = () => {
             <div className="flex items-center gap-0">
               <Link to="/">
                 <img
-                  src="/src/assets/logo2.jpeg"
+                  src="/src/public/logo2.jpeg"
                   alt="ArtisanHub Logo"
                   className="w-12 h-10 object-contain"
                 />
