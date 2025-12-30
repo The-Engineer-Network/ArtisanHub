@@ -1,4 +1,5 @@
 import { Home, User, Image, MessageCircle, Settings, LogOut } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Sidebar = ({ isOpen, setIsOpen }) => {
   const navItems = [
@@ -15,9 +16,9 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
         }`}
     >
       <div className="flex items-center justify-between mb-8">
-        <h1 className="text-2xl font-bold text-gray-800">
+        <Link to="/" className="text-2xl font-bold text-gray-800 hover:text-orange-700 transition">
           Artisan<span className="text-orange-600">Hub</span>
-        </h1>
+        </Link>
         <button onClick={() => setIsOpen(false)} className="md:hidden text-gray-500">
           ✕
         </button>

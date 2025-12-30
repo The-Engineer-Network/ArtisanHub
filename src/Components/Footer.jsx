@@ -7,7 +7,7 @@ const Footer = () => {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <img
-                src="/src/public/logo2.jpeg"
+                src="/logo2.jpeg"
                 alt="ArtisanHub Logo"
                 className="w-12 h-15 object-contain"
               />

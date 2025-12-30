@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
   // State for selected langage
@@ -18,7 +18,7 @@ const Navbar = () => {
             <div className="flex items-center gap-0">
               <Link to="/">
                 <img
-                  src="/src/public/logo2.jpeg"
+                  src="/logo2.jpeg"
                   alt="ArtisanHub Logo"
                   className="w-12 h-10 object-contain"
                 />
@@ -31,17 +31,23 @@ const Navbar = () => {
               </span>
             </div>
 
-            <div className="gap-6 flex-1 flex justify-center">
-              <Link to="/about" className="items-left font-aladin text-1xl  text-black  hover:text-orange-700 transition font-bold">
+            <div className="hidden md:flex gap-6 flex-1 justify-center">
+              <NavLink to="/" className={({ isActive }) => `items-left font-aladin text-1xl transition font-bold ${isActive ? "text-orange-700 underline" : "text-black hover:text-orange-700"}`}>
+                Home
+              </NavLink>
+              <NavLink to="/about" className={({ isActive }) => `items-left font-aladin text-1xl transition font-bold ${isActive ? "text-orange-700 underline" : "text-black hover:text-orange-700"}`}>
                 About us
-              </Link>
+              </NavLink>
 
-              <Link to="/faq" className=" font-aladin text-1xl  text-black  hover:text-orange-700 transition font-bold">
+              <NavLink to="/faq" className={({ isActive }) => `font-aladin text-1xl transition font-bold ${isActive ? "text-orange-700 underline" : "text-black hover:text-orange-700"}`}>
                 FAQ
-              </Link>
-              <Link to="/contact" className=" font-aladin text-1xl  text-black  hover:text-orange-700 transition font-bold">
+              </NavLink>
+              <NavLink to="/join" className={({ isActive }) => `font-aladin text-1xl transition font-bold ${isActive ? "text-orange-700 underline" : "text-black hover:text-orange-700"}`}>
+                Join
+              </NavLink>
+              <NavLink to="/contact" className={({ isActive }) => `font-aladin text-1xl transition font-bold ${isActive ? "text-orange-700 underline" : "text-black hover:text-orange-700"}`}>
                 Contact
-              </Link>
+              </NavLink>
             </div>
 
             {/* Desktop Menu */}
@@ -101,6 +107,31 @@ const Navbar = () => {
           {isMobileMenuOpen && (
             <div className="md:hidden mt-4 py-4 border-t border-gray-200">
               <div className="flex flex-col gap-4">
+                <NavLink to="/about"
+                  className={({ isActive }) => `font-aladin transition font-bold block ${isActive ? "text-orange-700 underline" : "text-black hover:text-orange-700"}`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  About us
+                </NavLink>
+                <NavLink to="/faq"
+                  className={({ isActive }) => `font-aladin transition font-bold block ${isActive ? "text-orange-700 underline" : "text-black hover:text-orange-700"}`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  FAQ
+                </NavLink>
+                <NavLink to="/join"
+                  className={({ isActive }) => `font-aladin transition font-bold block ${isActive ? "text-orange-700 underline" : "text-black hover:text-orange-700"}`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Join
+                </NavLink>
+                <NavLink to="/contact"
+                  className={({ isActive }) => `font-aladin transition font-bold block ${isActive ? "text-orange-700 underline" : "text-black hover:text-orange-700"}`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Contact
+                </NavLink>
+
                 <select
                   value={selectedLanguage}
                   onChange={(e) => setSelectedLanguage(e.target.value)}
@@ -113,9 +144,11 @@ const Navbar = () => {
                   ))}
                 </select>
 
-                <button className="w-full px-6 py-3 bg-orange-700 font-aladin text-white rounded-lg hover:bg-orange-700 transition">
-                  Join as Artisan
-                </button>
+                <Link to="/join">
+                  <button className="w-full px-6 py-3 bg-orange-700 font-aladin text-white rounded-lg hover:bg-orange-700 transition">
+                    Join as Artisan
+                  </button>
+                </Link>
 
               </div>
             </div>

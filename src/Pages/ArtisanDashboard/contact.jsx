@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 /* import Navbar from "../components/Navbar"; */
 
 const Contact = () => {
@@ -10,7 +11,11 @@ const Contact = () => {
         <div className="grid items-start grid-cols-1 gap-10 lg:grid-cols-2">
 
           {/* LEFT SECTION */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+          >
             <h1 className="text-4xl font-semibold leading-snug">
               Get in <span className="font-medium">touch with us</span>
             </h1>
@@ -49,10 +54,15 @@ const Contact = () => {
                 </svg>
               </div>
             </button>
-          </div>
+          </motion.div>
 
           {/* FORM */}
-          <div className="bg-white shadow-[0_8px_30px_rgba(0,0,0,0.3)] rounded-3xl p-8">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8 }}
+            className="bg-white shadow-[0_8px_30px_rgba(0,0,0,0.3)] rounded-3xl p-8"
+          >
             <form className="space-y-5">
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <div>
@@ -110,10 +120,10 @@ const Contact = () => {
                 </div>
               </button>
             </form>
-          </div>
+          </motion.div>
         </div>
       </div>
-    </div>
+    </div >
   );
 }
 

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 import {
   Search,
   Star,
@@ -20,6 +21,11 @@ const HomePage = () => {
   const [searchLocation, setSearchLocation] = useState("");
   const [selectedLanguage, setSelectedLanguage] = useState("English");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeFaqIndex, setActiveFaqIndex] = useState(null);
+
+  const toggleFaq = (index) => {
+    setActiveFaqIndex(activeFaqIndex === index ? null : index);
+  };
 
   const languages = ["English", "French", "Hausa", "Igbo", "Yoruba"];
 
@@ -146,8 +152,46 @@ const HomePage = () => {
     },
   ];
 
+  const homeFaqs = [
+    {
+      question: "How do I know artisans are verified?",
+      answer: "All artisans go through our verification process including ID checks and skill validation. Look for the blue checkmark badge."
+    },
+    {
+      question: "Is ArtisanHub free to use?",
+      answer: "Yes, Browsing and contacting artisans is completely free for customers. Artisans can register for free with premium features available."
+    },
+    {
+      question: "What if I'm not satisfied with the service?",
+      answer: "We have a dispute resolution system. Contact our support team and we'll help mediate and find a solution."
+    },
+    {
+      question: "How do I become an artisan on the platform?",
+      answer: `Click "Join as Artisan", complete the registration form with your details and portfolio, and our team will verify your profile within 24-48 hours.`
+    }
+  ];
+
   const handleSearch = () => {
     alert(`Searching for ${searchService} in ${searchLocation}`);
+  };
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5 }
+    }
   };
 
   return (
@@ -157,26 +201,42 @@ const HomePage = () => {
 
       <section className="max-w-7xl mx-auto px-4 py-10">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+          <motion.h1
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-4xl font-bold text-gray-900 mb-4"
+          >
             Find Trusted{" "}
             <span className="text-orange-700 text-5xl drop-shadow-lg">
               Artisans{" "}
             </span>{" "}
             Near You{" "}
-          </h1>
-          <p className="text-2xl text-black-600 font-aladin max-w-2xl mx-auto">
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+            className="text-2xl text-black-600 font-aladin max-w-2xl mx-auto"
+          >
             Connect with verified skilled professionals across Nigeria. From
             fashion designers to electricians, find the perfect artisan for your
             needs.
-          </p>
+          </motion.p>
         </div>
 
         {/* TRUST & SECURITY SECTION */}
         <div className="pb-4">
           <section className="py-8 bg-gray-50 border-y border-gray-200">
             <div className="max-w-7xl mx-auto px-4">
-              <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
-                <div className="flex items-center gap-3">
+              <motion.div
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                className="flex flex-wrap items-center justify-center gap-8 md:gap-12"
+              >
+                <motion.div variants={itemVariants} className="flex items-center gap-3">
                   <CheckCircle className="w-8 h-8 text-green-600" />
                   <div>
                     <p className="font-semibold text-balck-900">ID Verified</p>
@@ -184,9 +244,9 @@ const HomePage = () => {
                       All artisans verified
                     </p>
                   </div>
-                </div>
+                </motion.div>
 
-                <div className="flex items-center gap-3">
+                <motion.div variants={itemVariants} className="flex items-center gap-3">
                   <MapPin className="w-8 h-8 text-blue-600" />
                   <div>
                     <p className="font-semibold text-balck-900">
@@ -196,9 +256,9 @@ const HomePage = () => {
                       GPS confirmed locations
                     </p>
                   </div>
-                </div>
+                </motion.div>
 
-                <div className="flex items-center gap-3">
+                <motion.div variants={itemVariants} className="flex items-center gap-3">
                   <Star className="w-8 h-8 text-yellow-500" />
                   <div>
                     <p className="font-semibold text-black-900">
@@ -208,9 +268,9 @@ const HomePage = () => {
                       Real customer feedback
                     </p>
                   </div>
-                </div>
+                </motion.div>
 
-                <div className="flex items-center gap-3">
+                <motion.div variants={itemVariants} className="flex items-center gap-3">
                   <Users className="w-8 h-8 text-purple-600" />
                   <div>
                     <p className="font-semibold text-black-900">
@@ -220,13 +280,18 @@ const HomePage = () => {
                       24/7 support available
                     </p>
                   </div>
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
             </div>
           </section>
         </div>
         {/* SEARCH BAR */}
-        <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-6 mb-8">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-6 mb-8"
+        >
           <div className="grid md:grid-cols-3 gap-4">
             <div className="md:col-span-1">
               <label className="block text-x font-bold text-black-700 mb-2">
@@ -267,7 +332,7 @@ const HomePage = () => {
               </button>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Trust Indicators */}
         <div className="flex flex-wrap justify-center gap-5 text-center">
@@ -300,9 +365,15 @@ const HomePage = () => {
             Find and hire trusted artisans in 3 simple steps
           </p>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid md:grid-cols-3 gap-8"
+          >
             {/* Step 1 */}
-            <div className="text-center">
+            <motion.div variants={itemVariants} className="text-center">
               <div className="w-20 h-20 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Search className="w-10 h-10 text-orange-600" />
               </div>
@@ -313,10 +384,10 @@ const HomePage = () => {
               <p className="text-black-600 font-semibold text-xl">
                 Tell us what service you need and your location
               </p>
-            </div>
+            </motion.div>
 
             {/* Step 2 */}
-            <div className="text-center">
+            <motion.div variants={itemVariants} className="text-center">
               <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Users className="w-10 h-10 text-blue-600" />
               </div>
@@ -327,10 +398,10 @@ const HomePage = () => {
               <p className="text-black-600 font-semibold text-xl">
                 Browse verified artisan profiles, reviews, and ratings
               </p>
-            </div>
+            </motion.div>
 
             {/* Step 3 */}
-            <div className="text-center">
+            <motion.div variants={itemVariants} className="text-center">
               <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <CheckCircle className="w-10 h-10 text-green-600" />
               </div>
@@ -341,8 +412,8 @@ const HomePage = () => {
               <p className="text-black-600 font-semibold text-xl">
                 Contact directly via WhatsApp and get the job done
               </p>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
@@ -352,11 +423,18 @@ const HomePage = () => {
           <h2 className="text-4xl text-center font-aladin text-black-900 mb-12">
             Our Services
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6">
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6"
+          >
             {categories.map((category) => {
               const Icon = category.icon;
               return (
-                <div
+                <motion.div
+                  variants={itemVariants}
                   key={category.name}
                   className="p-6 bg-gray-50 rounded-xl hover:shadow-lg transition cursor-pointer group"
                 >
@@ -368,10 +446,10 @@ const HomePage = () => {
                   <h3 className="text-center font-semibold text-gray-800">
                     {category.name}
                   </h3>
-                </div>
+                </motion.div>
               );
             })}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -476,9 +554,16 @@ const HomePage = () => {
           <h2 className="text-4xl font-aladin text-center text-gray-900 mb-10">
             Top Rated Artisans
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
             {featuredArtisans.map((artisan) => (
-              <div
+              <motion.div
+                variants={itemVariants}
                 key={artisan.name}
                 className="bg-white rounded-xl shadow-md hover:shadow-xl transition p-6"
               >
@@ -513,9 +598,9 @@ const HomePage = () => {
                 <button className="w-full py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition font-medium">
                   Contact on WhatsApp
                 </button>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -622,53 +707,32 @@ const HomePage = () => {
           </h2>
 
           <div className="space-y-6">
-            <div className="bg-white p-6 rounded-xl shadow-sm">
-              <h3 className="text-lg font-bold mb-2">
-                How do I know artisans are verified?
-              </h3>
-              <p
-                className="text-black
-        -600"
+            {homeFaqs.map((faq, index) => (
+              <div
+                key={index}
+                className="bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition"
               >
-                All artisans go through our verification process including ID
-                checks and skill validation. Look for the blue checkmark badge.
-              </p>
-            </div>
-
-            <div className="bg-white p-6 rounded-xl shadow-sm">
-              <h3 className="text-lg font-bold mb-2">
-                Is ArtisanHub free to use?
-              </h3>
-              <p
-                className="text-black
-        -600"
-              >
-                Yes, Browsing and contacting artisans is completely free for
-                customers. Artisans can register for free with premium features
-                available.
-              </p>
-            </div>
-
-            <div className="bg-white p-6 rounded-xl shadow-sm">
-              <h3 className="text-lg font-bold mb-2">
-                What if I'm not satisfied with the service?
-              </h3>
-              <p className="text-black-600">
-                We have a dispute resolution system. Contact our support team
-                and we'll help mediate and find a solution.
-              </p>
-            </div>
-
-            <div className="bg-white p-6 rounded-xl shadow-sm">
-              <h3 className="text-lg font-bold mb-2">
-                How do I become an artisan on the platform?
-              </h3>
-              <p className="text-black-600">
-                Click "Join as Artisan", complete the registration form with
-                your details and portfolio, and our team will verify your
-                profile within 24-48 hours.
-              </p>
-            </div>
+                <button
+                  onClick={() => toggleFaq(index)}
+                  className="w-full flex justify-between items-center px-6 py-4 text-left text-gray-800 font-medium focus:outline-none"
+                >
+                  <span className="text-lg font-bold">{faq.question}</span>
+                  <span className="text-orange-600 text-2xl transition-all duration-500">
+                    {activeFaqIndex === index ? "-" : "+"}
+                  </span>
+                </button>
+                <div
+                  className={`overflow-hidden transition-all duration-500 ease-in-out ${activeFaqIndex === index
+                    ? "max-h-40 opacity-100 py-3"
+                    : "max-h-0 opacity-0"
+                    }`}
+                >
+                  <p className="px-6 pb-4 text-gray-600 leading-relaxed">
+                    {faq.answer}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

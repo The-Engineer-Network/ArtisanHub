@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 
-import { useNavigate } from "react-router-dom";// ✅ import navigate hook
+import { useNavigate, Link } from "react-router-dom";// ✅ import navigate hook
 import {
   User,
   Mail,
@@ -67,24 +68,32 @@ const JoinUs = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-orange-100 flex items-center justify-center px-4 py-8">
       <div className="w-full max-w-6xl grid md:grid-cols-2 gap-8 items-center">
-        <div className="hidden md:block text-center md:text-left">
-          <div className="flex items-center gap-2 justify-center md:justify-start mb-6">
-            <img
-              src="/src/assets/logo2.jpeg"
-              alt="ArtisanHub Logo"
-              className="w-17 h-12 object-contain"zzzzzzzzz
-            />
-            <span
-              className="text-4xl font-bold text-gray-800"
-              style={{ fontFamily: "Aladin, cursive" }}
-            >
-              Artisan<span className="text-orange-600">Hub</span>
-            </span>
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          className="hidden md:block text-center md:text-left"
+        >
+          <div className="text-center mb-8">
+            <Link to="/" className="inline-block">
+              <div className="flex items-center justify-center gap-0">
+                <img
+                  src="/logo2.jpeg"
+                  alt="ArtisanHub Logo"
+                  className="w-16 h-16 object-contain"
+                />
+                <span className="text-3xl font-bold font-aladin text-gray-800">
+                  Artisan<span className="text-orange-600">Hub</span>
+                </span>
+              </div>
+            </Link>
+            <h2 className="text-2xl font-bold text-gray-900 mt-4">
+              Join as an Artisan
+            </h2>
+            <p className="text-gray-600 mt-2">
+              Create your profile and start getting jobs
+            </p>
           </div>
-
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            {isLogin ? "Welcome Back!" : "Join Our Community"}
-          </h1>
 
           <p
             className="text-xl text-gray-600 mb-8"
@@ -130,9 +139,14 @@ const JoinUs = () => {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="bg-white rounded-2xl shadow-2xl p-8 md:p-10">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
+          className="bg-white rounded-2xl shadow-2xl p-8 md:p-10"
+        >
           <div className="md:hidden flex items-center gap-2 justify-center mb-6">
             <div className="w-12 h-12 bg-orange-600 rounded-full flex items-center justify-center">
               <Briefcase className="w-6 h-6 text-white" />
@@ -148,21 +162,19 @@ const JoinUs = () => {
           <div className="flex gap-2 mb-8 bg-gray-100 p-1 rounded-lg">
             <button
               onClick={() => setIsLogin(true)}
-              className={`flex-1 py-3 rounded-lg font-semibold transition ${
-                isLogin
-                  ? "bg-orange-600 text-white shadow-md"
-                  : "bg-transparent text-gray-600 hover:text-gray-900"
-              }`}
+              className={`flex-1 py-3 rounded-lg font-semibold transition ${isLogin
+                ? "bg-orange-600 text-white shadow-md"
+                : "bg-transparent text-gray-600 hover:text-gray-900"
+                }`}
             >
               Login
             </button>
             <button
               onClick={() => setIsLogin(false)}
-              className={`flex-1 py-3 rounded-lg font-semibold transition ${
-                !isLogin
-                  ? "bg-orange-600 text-white shadow-md"
-                  : "bg-transparent text-gray-600 hover:text-gray-900"
-              }`}
+              className={`flex-1 py-3 rounded-lg font-semibold transition ${!isLogin
+                ? "bg-orange-600 text-white shadow-md"
+                : "bg-transparent text-gray-600 hover:text-gray-900"
+                }`}
             >
               Sign Up
             </button>
@@ -399,9 +411,9 @@ const JoinUs = () => {
               Facebook
             </button>
           </div>
-        </div>
-      </div>
-    </div>
+        </motion.div>
+      </div >
+    </div >
   );
 };
 
